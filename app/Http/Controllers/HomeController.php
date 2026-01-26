@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
 use Laratrust\LaratrustFacade as Laratrust;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -32,7 +33,14 @@ class HomeController extends Controller
 
     protected function adminDashboard()
     {
-        return view('dashboard.admin');
+        $authors = [];
+        $books = [];
+        foreach (Author::all() as $author) {
+            $authors[] = $author->name;
+            $books[] = $author->books()->count();
+        }
+
+        return view('dashboard.admin', compact('authors', 'books'));
     }
 
     protected function memberDashboard()
