@@ -7,7 +7,10 @@ use App\User;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\UpdateMemberRequest;
+use App\Http\Requests\StoreMemberRequest;
 
 class MembersController extends Controller
 {
